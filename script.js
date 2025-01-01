@@ -1,3 +1,10 @@
+// script.js
+
+// 1) Clear sessionStorage on every page load to always start fresh
+window.addEventListener("load", () => {
+  sessionStorage.clear();
+});
+
 // ===== DOM ELEMENTS =====
 const newThoughtInput = document.getElementById("newThought");
 const submitThoughtBtn = document.getElementById("submitThoughtBtn");
@@ -10,9 +17,9 @@ const addResetPhraseBtn = document.getElementById("addResetPhraseBtn");
 const thoughtList = document.getElementById("thoughtList");
 const exportBtn = document.getElementById("exportBtn");
 
-// ===== GLOBAL STATE (LOCAL STORAGE KEY) =====
-const LOCAL_STORAGE_KEY = "clearmindloopData";
-let thoughtsData = loadData(); // Load from Local Storage
+// ===== GLOBAL STATE (SESSION STORAGE KEY) =====
+const STORAGE_KEY = "clearmindloopData";
+let thoughtsData = loadData(); // Load from sessionStorage (will be empty due to the clear on load)
 
 // ===== EVENT LISTENERS =====
 submitThoughtBtn.addEventListener("click", handleNewThought);
@@ -26,15 +33,15 @@ renderThoughts();
 //             FUNCTIONS
 // ------------------------------------
 
-// Load data from localStorage or return an empty array
+// Load data from sessionStorage or return an empty array
 function loadData() {
-  const json = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const json = sessionStorage.getItem(STORAGE_KEY);
   return json ? JSON.parse(json) : [];
 }
 
-// Save data back to localStorage
+// Save data back to sessionStorage
 function saveData() {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(thoughtsData));
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(thoughtsData));
 }
 
 // Handle submission of a new thought
@@ -52,7 +59,7 @@ function handleNewThought() {
     resetPhrases: [],
   };
 
-  // Add to the beginning of the array
+  // Insert at the beginning of the array
   thoughtsData.unshift(newThought);
   saveData();
 
@@ -62,7 +69,7 @@ function handleNewThought() {
   // Show reset phrase section
   showResetSection(newThought);
 
-  // Re-render
+  // Re-render the list
   renderThoughts();
 }
 
@@ -102,7 +109,7 @@ function handleNewResetPhrase() {
   // Hide the reset section after adding the phrase
   resetSection.classList.add("hidden");
 
-  // Re-render
+  // Re-render the list
   renderThoughts();
 }
 
@@ -116,7 +123,7 @@ function renderThoughts() {
     const thoughtCard = document.createElement("div");
     thoughtCard.className = "bg-white shadow p-4 rounded";
 
-    // Thought text & edit button
+    // Thought text & edit button container
     const thoughtHeader = document.createElement("div");
     thoughtHeader.className = "flex justify-between items-start mb-2";
 
@@ -150,7 +157,7 @@ function renderThoughts() {
       const rpText = document.createElement("span");
       rpText.textContent = `- ${rp.text}`;
 
-      // Edit button for reset phrase
+      // Edit button for the reset phrase
       const editResetBtn = document.createElement("button");
       editResetBtn.textContent = "Edit";
       editResetBtn.className = "text-xs text-blue-500 hover:underline ml-2";

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClearMindLoop</title>
 
   <!-- Tailwind CSS (CDN) -->
@@ -14,6 +12,7 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="bg-gray-100 text-gray-800">
   <!-- Centered Container -->
   <div class="container mx-auto px-4 py-6 max-w-screen-md">
@@ -25,43 +24,23 @@
 
     <!-- Prompt Section -->
     <section id="thought-section" class="mb-8">
-      <label
-        for="newThought"
-        class="block mb-2 text-lg font-semibold"
-      >
+      <label for="newThought" class="block mb-2 text-lg font-semibold">
         What’s bothering you right now?
       </label>
-      <input
-        id="newThought"
-        type="text"
-        class="w-full mb-3 p-2 border border-gray-300 rounded"
-        placeholder="Enter a bothersome thought..."
-      />
-      <button
-        id="submitThoughtBtn"
-        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-      >
+      <input id="newThought" type="text" class="w-full mb-3 p-2 border border-gray-300 rounded"
+        placeholder="Enter a bothersome thought..." />
+      <button id="submitThoughtBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
         Submit Thought
       </button>
     </section>
 
     <!-- Reset Phrase Creation (Shown after user submits a thought) -->
-    <section
-      id="reset-section"
-      class="mb-6 hidden"
-    >
+    <section id="reset-section" class="mb-6 hidden">
       <h2 class="text-lg font-semibold mb-3">Create a Reset Phrase</h2>
       <p id="currentThoughtDisplay" class="mb-2 font-medium"></p>
-      <input
-        id="newResetPhrase"
-        type="text"
-        class="w-full mb-3 p-2 border border-gray-300 rounded"
-        placeholder="Enter a positive or neutralizing statement..."
-      />
-      <button
-        id="addResetPhraseBtn"
-        class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
-      >
+      <input id="newResetPhrase" type="text" class="w-full mb-3 p-2 border border-gray-300 rounded"
+        placeholder="Enter a positive or neutralizing statement..." />
+      <button id="addResetPhraseBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">
         Add Reset Phrase
       </button>
     </section>
@@ -74,10 +53,7 @@
 
     <!-- Export Button -->
     <section>
-      <button
-        id="exportBtn"
-        class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded"
-      >
+      <button id="exportBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded">
         Export to .txt
       </button>
     </section>
@@ -85,7 +61,8 @@
     <!-- Disclaimer -->
     <footer class="text-center text-sm text-gray-500 mt-8">
       <p>
-        ClearMindLoop is a purely demonstrational.
+        ClearMindLoop is a purely demonstrational - you will lose all of your input when you refresh or close your
+        browser.
       </p>
     </footer>
   </div>
@@ -93,4 +70,5 @@
   <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
+
 </html>
