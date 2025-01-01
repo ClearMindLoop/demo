@@ -1,0 +1,14 @@
+/* Minimal custom styles */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Simple fade transitions (optional) */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.3s ease-in;
+  opacity: 1;
+}
